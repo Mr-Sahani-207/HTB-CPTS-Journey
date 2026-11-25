@@ -8,8 +8,8 @@ Basic setup notes for connecting to Hack The Box Academy labs from my local Kali
   sudo openvpn academy-regular.ovpn
   
 
-Verify VPN Interface: Check if the tun0 interface is up and assigned an internal HTB IP (10.10.x.x):
-ip a show tun0
+**Verify VPN Interface: Check if the tun0 interface is up and assigned an internal HTB IP (10.10.x.x):**
+**ip a show tun0**
 
 Target Connectivity Check: After spawning a target machine, verify connectivity using ping:
 ping -c 4 <TARGET_IP>
