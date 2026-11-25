@@ -31,11 +31,3 @@ Common Ports to Remember
 139 / 445 — SMB (Windows file sharing)
 3306 — MySQL Database
 3389 — RDP (Remote Desktop Protocol)
-- **22** — SSH (Secure Shell)
-- **23** — Telnet (Unencrypted remote access)
-- **25** — SMTP (Email transfer)
-- **53** — DNS (Domain Name System - TCP/UDP)
-- **80 / 443** — HTTP / HTTPS (Web traffic)
-- **139 / 445** — SMB (Windows file sharing)
-- **3306** — MySQL Database
-- **3389** — RDP (Remote Desktop Protocol)
