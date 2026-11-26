@@ -2,17 +2,74 @@
 
 ## 1. OSI Model (Open Systems Interconnection)
 
-* **Overview:** Developed by **ISO** in **1984** to standardize communication between devices from different vendors. It is divided into **7 layers**[cite: 1].
+* **Overview:**
+  * Developed by **ISO** in **1984** to enable communication between devices from different vendors.
+  * Divided into **7 layers**:
+    1. Application Layer
+    2. Presentation Layer
+    3. Session Layer
+    4. Transport Layer
+    5. Network Layer
+    6. Data Link Layer
+    7. Physical Layer
 
-| Layer # | Layer Name | Protocol Data Unit (PDU) | Key Function & Addressing | Examples / Protocols / Devices |
-| :--- | :--- | :--- | :--- | :--- |
-| **7** | **Application Layer** | Data | Provides a user interface to access network services and resources | HTTP, HTTPS, DNS, TFTP, Telnet, SSH, SMTP, DHCP[cite: 1, 39] |
-| **6** | **Presentation Layer** | Data | Data formatting/translation, encryption/decryption, and compression/decompression | File formats (`.doc`, `.txt`, `.png`), SSL/TLS[cite: 1, 2] |
-| **5** | **Session Layer** | Data | Establishes, maintains, and terminates communication sessions (connections) between hosts | NetBIOS, RPC, SQL sessions[cite: 2] |
-| **4** | **Transport Layer** | Segment (TCP) / Datagram (UDP) | End-to-end delivery, segmentation, flow control, and error control using **Port Numbers** | TCP (Protocol `6`), UDP (Protocol `17`)[cite: 2, 6] |
-| **3** | **Network Layer** | Packet | Source-to-destination (host-to-host) delivery, logical addressing (**IP Address**), and **Routing** (shortest path selection) | IPv4, IPv6, ICMP, OSPF, EIGRP, Routers[cite: 6, 27, 28, 35, 37] |
-| **2** | **Data Link Layer** | Frame | Node-to-node delivery on the local network using physical **MAC Addresses** | Ethernet, ARP, Switches[cite: 4, 26, 42] |
-| **1** | **Physical Layer** | Bit / Byte | Converts frames into electrical/optical signals (`0`s and `1`s) for transmission over physical media | Hubs, Repeaters, Modems, Cables, Connectors *(unintelligent/stateless devices operate here)*[cite: 5] |
+---
+
+### Layer-by-Layer Functions
+
+#### 7. Application Layer
+* Provides a direct interface to users so they can access network services and resources.
+* Supports key protocols and services such as **HTTP, HTTPS, DNS, TFTP, Telnet, SSH, and SMTP**.
+* **PDU (Protocol Data Unit):** Data.
+
+#### 6. Presentation Layer
+* Responsible for presenting and translating data into the required format so both sender and receiver understand it.
+* Provides **encryption and decryption** as well as **compression and decompression**.
+* Handles file formats and extensions such as `.doc`, `.txt`, and `.png`.
+* **PDU:** Data.
+
+#### 5. Session Layer
+* Responsible for **creating, maintaining, and terminating** sessions (connections) between communicating applications.
+* **PDU:** Data.
+
+#### 4. Transport Layer (Port Addressing)
+* Responsible for **end-to-end delivery** of data across the network.
+* Uses **Port Addresses (Port Numbers)** to identify specific applications/services.
+* Performs **segmentation**—dividing large amounts of data into smaller chunks (segments) before transmission.
+* Establishes a connection between sender and receiver (when using connection-oriented protocols).
+* Provides **Flow Control** (regulating how much data a sender transmits and how much a receiver can accept without congestion).
+* Provides **Error Control** (ensuring received data arrives error-free).
+* **Key Protocols:** **TCP** (Protocol Number `6`) and **UDP** (Protocol Number `17`).
+* **PDU:** Segment (TCP) and Datagram (UDP).
+
+#### 3. Network Layer (Logical Addressing)
+* Responsible for **source-to-destination (host-to-host) delivery** of data across different networks.
+* Provides a unique **logical identity (IP Address)** to every network device.
+* Handles **Routing**—selecting the shortest and best path for packets to reach their destination.
+* Uses **TTL (Time to Live)** to represent a packet's lifespan and prevent endless Layer 3 routing loops:
+  * Every router decrements the packet's TTL by `1` upon forwarding (egress/hop).
+  * If TTL becomes `0` **before** reaching the destination, the packet is dropped.
+  * If TTL becomes `0` **at** the destination, the packet is accepted.
+  * **Default OS TTL Values (for OS Identification):**
+    * Linux / Unix: `64`
+    * Windows: `128`
+    * Cisco / Network Devices: `255`
+* **PDU:** Packet.
+
+#### 2. Data Link Layer (Physical Addressing)
+* Responsible for **node-to-node delivery** of data within the same local network.
+* Uses **MAC Addresses** (physical addresses) to identify devices locally.
+* **PDU:** Frame.
+
+#### 1. Physical Layer
+* Responsible for converting frames into **electronic/optical signals** (`0`s and `1`s) for physical transmission.
+* **Devices operating at the Physical Layer:**
+  1. Hub
+  2. Repeater
+  3. Modem
+  4. Connectors & Cables
+* *Note:* Every unintelligent ("brainless"/stateless) hardware device operates at the Physical Layer.
+* **PDU:** Bit and Byte[cite: 1, 2, 4, 5, 6].
 
 ### Time to Live (TTL) — Layer 3 Loop Prevention
 * **Purpose:** Prevents packets from looping endlessly across a Layer 3 network by setting an expiration hop limit[cite: 4, 6].
