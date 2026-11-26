@@ -32,7 +32,7 @@ This repo contains my personal study notes and command cheat-sheets from the **C
 | 02 | Linux Fundamentals | Done | [Notes](./02-Linux-Fundamentals/README.md) |
 | 03 | Introduction To Networking | Done | [Notes](./03-Introduction-To-Networking/README.md) |
 | 04 | Getting Started | Done | [Notes](./04-Getting-Started) |
-| 05 | Penetration Testing Process | In Progress | - |
+| 05 | Penetration Testing Process | Done | [Notes](./Penetration_Testing_Process) |
 | 06 | Network Enumeration with Nmap | Up next | - |
 | 07 | Footprinting | Pending | - |
 | 08 | Information Gathering - Web Edition | Pending | - |
