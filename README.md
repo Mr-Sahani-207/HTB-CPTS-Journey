@@ -30,8 +30,53 @@ This repo contains my personal study notes and command cheat-sheets from the **C
 | 01 | Intro To Academy | Done | [Notes](./01-Intro-To-Academy/README.md) |
 | 02 | Linux Fundamentals | Done | [Notes](./02-Linux-Fundamentals/README.md) |
 | 03 | Introduction To Networking | Done | [Notes](./03-Introduction-To-Networking/README.md) |
-| 04 | Getting Started | Uploading soon | - |
-| 05 | Penetration Testing Process | Up next | - |
+
+## Full CPTS Path Syllabus (28 Modules)
+
+<details>
+<summary>Click to view the complete Penetration Tester Job Role Path roadmap</summary>
+
+### Introduction
+- [x] 01. Penetration Testing Process *(In Progress)*
+- [x] 02. Getting Started
+
+### Reconnaissance, Enumeration & Attack Planning
+- [ ] 03. Network Enumeration with Nmap
+- [ ] 04. Footprinting
+- [ ] 05. Information Gathering - Web Edition
+- [ ] 06. Vulnerability Assessment
+- [ ] 07. File Transfers
+- [ ] 08. Shells & Payloads
+- [ ] 09. Using the Metasploit Framework
+
+### Exploitation & Lateral Movement
+- [ ] 10. Password Attacks
+- [ ] 11. Attacking Common Services
+- [ ] 12. Pivoting, Tunneling, and Port Forwarding
+- [ ] 13. Active Directory Enumeration & Attacks
+
+### Web Exploitation
+- [ ] 14. Using Web Proxies
+- [ ] 15. Attacking Web Applications with Ffuf
+- [ ] 16. Login Brute Forcing
+- [ ] 17. SQL Injection Fundamentals
+- [ ] 18. SQLMap Essentials
+- [ ] 19. Cross-Site Scripting (XSS)
+- [ ] 20. File Inclusion
+- [ ] 21. File Upload Attacks
+- [ ] 22. Command Injections
+- [ ] 23. Web Attacks
+- [ ] 24. Attacking Common Applications
+
+### Post-Exploitation
+- [ ] 25. Linux Privilege Escalation
+- [ ] 26. Windows Privilege Escalation
+
+### Reporting & Capstone
+- [ ] 27. Documentation & Reporting
+- [ ] 28. Attacking Enterprise Networks
+
+</details>
 
 ## Topics Covered So Far
 - **Linux:** File system structure, user permissions (`chmod`, `chown`), managing processes/services, and basic bash scripting.
