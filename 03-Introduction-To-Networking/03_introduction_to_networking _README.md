@@ -13,6 +13,67 @@ Quick reference notes on networking models, IP addressing, subnetting, and commo
 | 2. Data Link | Network Access | Ethernet, MAC Address, Switches |
 | 1. Physical | Network Access | Cables, Fiber, Wi-Fi Signals |
 
+# TCP 3-Way Handshake — Complete Technical Guide
+
+---
+
+## 1. Diagrammatic Overview
+
+Refer to the diagram below to visualize the packet flow and state transitions during connection establishment:
+
+![TCP 3-Way Handshake Flow](image_44.png)
+
+---
+
+## 2. What Is the TCP 3-Way Handshake?
+
+* **Definition:**
+  * **TCP (Transmission Control Protocol)** is a connection-oriented protocol that establishes a reliable, verified session between a **Client** and a **Server** before transmitting any application data.
+  * This three-step connection establishment sequence is known as the **TCP 3-Way Handshake**.
+
+* **Objective:**
+  * Verifies that both endpoints are active and reachable on the network, while synchronizing (`SYN`) and acknowledging (`ACK`) initial sequence numbers to ensure ordered, lossless packet delivery.
+
+---
+
+## 3. How the 3 Steps Work (`SYN` $\rightarrow$ `SYN-ACK` $\rightarrow$ `ACK`)
+
+#### Step 1 — `SYN` (Synchronize)
+
+* The **Client** initiates the connection by sending a TCP segment with the **`SYN`** flag set and chooses an Initial Sequence Number (e.g., `Seq = 100`).
+* **Plain English:** *"Hello Server, I would like to connect with you. Let's synchronize our sequence numbers."*
+
+#### Step 2 — `SYN-ACK` (Synchronize-Acknowledgment)
+
+* Upon receiving the `SYN` packet, the **Server** responds with both the **`SYN`** and **`ACK`** flags set—confirming receipt of the client's packet (`Ack = 101`, indicating the next expected byte) and advertising its own Initial Sequence Number (e.g., `Seq = 300`).
+* **Plain English:** *"Hello Client, I received your request! Here is my sequence number—can you hear me?"*
+
+#### Step 3 — `ACK` (Acknowledgment)
+
+* The **Client** sends a final segment with the **`ACK`** flag set (`Ack = 301`) to confirm receipt of the server's sequence number, completing the handshake.
+* **Plain English:** *"Yes Server, I received your acknowledgment. Everything is synchronized—let's begin data transfer."*
+
+---
+
+## 4. TCP Connection State Transitions
+
+* **Client Side:** `CLOSED` $\rightarrow$ `SYN-SENT` $\rightarrow$ *(receives `SYN-ACK` & sends `ACK`)* $\rightarrow$ `ESTABLISHED`
+* **Server Side:** `LISTEN` $\rightarrow$ `SYN-RECEIVED` $\rightarrow$ *(receives `ACK`)* $\rightarrow$ `ESTABLISHED`
+
+*Note:* Once both endpoints reach the **`ESTABLISHED`** state, actual payload data (such as HTTP requests or file transfers) begins flowing across the connection.
+
+---
+
+## 5. Penetration Testing & Security Significance
+
+* **Nmap Stealth SYN Scan (`-sS`):**
+  * To scan targets quickly without completing full application-level sessions, Nmap sends only **Step 1 (`SYN`)**.
+  * If the target port responds with **`SYN-ACK`**, Nmap marks the port as **`open`** and immediately sends an **`RST` (Reset)** packet to tear down the connection before Step 3—making the scan faster and less noisy in application logs.
+
+* **SYN Flood Attack (Denial of Service):**
+  * An attacker overwhelms a target server by sending a high volume of **`SYN`** packets from spoofed IP addresses and intentionally withholding the final **`ACK`** in Step 3.
+  * Because the server keeps each connection in the `SYN-RECEIVED` state while waiting for an acknowledgment, its half-open connection queue fills up, preventing legitimate users from connecting.
+
 ## IPv4 Subnetting Cheat-Sheet
 | CIDR | Subnet Mask | Total IPs | Usable Hosts |
 | :--- | :--- | :--- | :--- |
